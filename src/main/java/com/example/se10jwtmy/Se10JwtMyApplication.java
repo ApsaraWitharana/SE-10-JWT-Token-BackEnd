@@ -12,7 +12,7 @@ public class Se10JwtMyApplication {
         SpringApplication.run(Se10JwtMyApplication.class, args);
     }
 
-    //
+    //entity value dto dagnn one hinda mohok idan mokktda dara tranfer krnn object dek map krgnn
     @Bean
     public ModelMapper modelMapper(){
         return new ModelMapper();

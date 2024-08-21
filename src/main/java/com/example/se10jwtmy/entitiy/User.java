@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import javax.management.relation.Role;
+import java.util.UUID;
+
 //05
 @Entity
 @Table(name="systemuser")
@@ -15,8 +17,8 @@ import javax.management.relation.Role;
 //@ToString(exclude ="password")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long uid;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID uid;
     private String email;
     private String password;
     private String name;

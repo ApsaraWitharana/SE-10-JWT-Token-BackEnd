@@ -1,5 +1,5 @@
 package com.example.se10jwtmy.config;
-
+//08
 import com.example.se10jwtmy.service.impl.UserServiceImpl;
 import jakarta.servlet.http.HttpServlet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +27,7 @@ public class WebSecurityConfig {
     @Autowired
     private JwtFilter jwtFilter;
 
+    @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
@@ -38,17 +39,27 @@ public class WebSecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)throws Exception{
         return authenticationConfiguration.getAuthenticationManager();
     }
-
+//mona req da gnne monad gnne nate
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth.requestMatchers(
-                        "/api/v1/auth/authenticate",
-                        "/api/v1/auth/register"
-                ).permitAll().anyRequest().authenticated())
+                        "/api/v1/auth/authenticate", //url ek hoyagnne methnin
+                        "/api/v1/auth/register").permitAll()
+                        .anyRequest().authenticated())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class).build();
 }
 
 
 }
+
+//auth.requestMatchers(
+//        "/api/v1/auth/authenticate", //url ek hoyagnne methnin
+//        "/api/v1/auth/register"
+//
+//       ).======>>permitAll() ekt gnnawa me wage req nm withark
+
+//header eke token ekk awill ek authenticate krpuwa tamyi authenticate req kiynne
+//end poin ekk ayi reg wenne user kenek register krgnn one hinda end point ekk denne //login ekt open krl tiygnne log wenn ona hinda
+//user hamontm gnn be sytem ekt gnn api athulen den widiyt

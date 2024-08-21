@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-//08
+//08 ==data gnn thamyi use krgnn
 @Transactional
 @Service
 public class UserServiceImpl implements UserDetailsService, UserService {
@@ -49,6 +49,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     //user name password  eken usename ek unic email ek widiyt gnne
+    //entity value dto dagnn one hinda mohok idan mokktda dara tranfer krnn object dek map krgnn
     @Override
     public UserDTO searchUser(String userName) {
        if (userRepository.existsByEmail(userName)){
